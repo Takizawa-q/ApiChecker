@@ -95,7 +95,6 @@ class WbConApiClient():
                 self.endpoints_status[endpoint]["status"] = "Success"
                 return
 
-
         # Check for expected keys in response
         if expected_keys:
             for key in expected_keys:
@@ -444,7 +443,7 @@ async def check_endpoints():
     tasks = []
     for api, data in RESPONSES.items():
         tasks.append(asyncio.create_task(cents(api, data)))
-        tasks.append(asyncio.create_task(demo(api, data)))
+        # tasks.append(asyncio.create_task(demo(api, data)))  # DEMO temporarily disabled
 
     await asyncio.gather(*tasks)
     return wbcon_api.endpoints_status
