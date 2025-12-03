@@ -37,7 +37,6 @@ class WbConApiClient():
 
         # Merge headers
         headers = {**self.default_headers, **extra_headers}
-        print(headers)
         start_time = time.time()
         try:
             r = await session_method(
@@ -48,7 +47,6 @@ class WbConApiClient():
                 *args,
                 **kwargs
             )
-            print(r.text[1:50])
         except Exception as e:
             elapsed_time = time.time() - start_time
             self.endpoints_status[endpoint]["time"] = elapsed_time
@@ -141,282 +139,282 @@ async def check_endpoints():
         password=config.password
     )
     RESPONSES = {
-        # "https://01-wb-pr-quota.wbcon.su/quota": {
-        #     "method": "post",
-        #     "json": {
-        #         "query_": {
-        #             "507": ["dst"],
-        #             "206348": ["src", "dst"],
-        #             "333333": ["src"]
-        #         },
-        #     },
-        #     "keys": ["src", "dst"]
+        "https://01-wb-pr-quota.wbcon.su/quota": {
+            "method": "post",
+            "json": {
+                "query_": {
+                    "507": ["dst"],
+                    "206348": ["src", "dst"],
+                    "333333": ["src"]
+                },
+            },
+            "keys": ["src", "dst"]
 
-        # },
-        # "https://01-wb-pr-quota.wbcon.su/stats": {
-        #     "method": "post",
-        #     "json": {
-        #         "query_": {
-        #             "507": ["dst"],
-        #             "206348": ["src", "dst"],
-        #             "333333": ["src"]
-        #         }
-        #     },
-        #     "keys": ["src", "dst"]
-        # },
-        # "https://01-na.wbcon.su/all_items": {
-        #     "method": "get",
-        # },
-        # "https://01-na.wbcon.su/last_info": {
-        #     "method": "post",
-        #     "json": {
-        #         "item": "Mesh системы"
-        #     }
-        # },
-        # "https://01-na.wbcon.su/all_info": {
-        #     "method": "post",
-        #     "json": {
-        #         "item": "Mesh системы"
-        #     }
-        # },
-        # "https://01-wb-price-segments.wbcon.su/items/": {
-        #     "method": "get",
-        #     "keys": ["predmet"]
-        # },
-        # f"https://01-wb-price-segments.wbcon.su/get/?cat_id=5655": {
-        #     "method": "get",
-        #     "keys": ["parse_time"],
-        # },
-        # "https://01-wb-category-searches.wbcon.su/items/": {
-        #     "method": "get",
-        #     "keys": ["predmet"]
-        # },
-        # "https://01-wb-category-searches.wbcon.su/get/?cat_id=644": {
-        #     "method": "get",
-        #     "keys": ["item_id", "predmet"]
-        # },
-        # "https://01-sellers.wbcon.su/inn?inn=9701197351": {
-        #     "method": "get",
-        #     "keys": ["inn"]
-        # },
-        # f"https://01-sellers.wbcon.su/ogrn?ogrn=321392600050191": {
-        #     "method": "get",
-        #     "keys": ["ogrn"]
-        # },
-        # "https://01-pvz.wbcon.su/get_all": {
-        #     "method": "get",
-        #     "keys": ["total", "ids"]
-        # },
-        # "https://01-pvz.wbcon.su/get/?id=22": {
-        #     "method": "get",
-        #     "keys": ["id", "locale"]
-        # },
-        # "https://01-comsa.wbcon.su/get": {
-        #     "method": "get",
-        #     "keys": ["category", "predmet"]
-        # },
-        # "https://01-comsa.wbcon.su/get_logistics_by_period?period=2025-11-25": {
-        #     "method": "get",
-        #     "keys": ["warehouse"]
-        # },
-        # "https://01-prices.wbcon.su/get_spp?articles=141120711;171007032;170095992": {
-        #     "method": "get",
-        #     "keys": ["141120711"],
-        #     "headers": {"wbtoken": "eyJhbGciOiJFUzI1NiIsImtpZCI6IjIwMjUwOTA0djEiLCJ0eXAiOiJKV1QifQ.eyJhY2MiOjMsImVudCI6MSwiZXhwIjoxNzgwMDM5MTIzLCJmb3IiOiJzZWxmIiwiaWQiOiIwMTlhYzZjMC1lYjljLTc5ZTEtODUxZC0zMWJkOWY5YWNkMmIiLCJpaWQiOjExNjA5OTE4LCJvaWQiOjI1NjI0OCwicyI6MTA3Mzc1Nzk1MCwic2lkIjoiODlmOWQ2YTUtMTM4NS00MzJlLWJkN2YtNTE4MTViYzg1MWVkIiwidCI6ZmFsc2UsInVpZCI6MTE2MDk5MTh9.D3RJ0vQaBx4qyaZIwYAfEgAIUE2pv9TOIzmKf0md4y9hHvZbgNG9C6jFoLaLt5XWfln0KzrUW3muIpJ7RNidSg"}
-        # },
+        },
+        "https://01-wb-pr-quota.wbcon.su/stats": {
+            "method": "post",
+            "json": {
+                "query_": {
+                    "507": ["dst"],
+                    "206348": ["src", "dst"],
+                    "333333": ["src"]
+                }
+            },
+            "keys": ["src", "dst"]
+        },
+        "https://01-na.wbcon.su/all_items": {
+            "method": "get",
+        },
+        "https://01-na.wbcon.su/last_info": {
+            "method": "post",
+            "json": {
+                "item": "Mesh системы"
+            }
+        },
+        "https://01-na.wbcon.su/all_info": {
+            "method": "post",
+            "json": {
+                "item": "Mesh системы"
+            }
+        },
+        "https://01-wb-price-segments.wbcon.su/items/": {
+            "method": "get",
+            "keys": ["predmet"]
+        },
+        f"https://01-wb-price-segments.wbcon.su/get/?cat_id=5655": {
+            "method": "get",
+            "keys": ["parse_time"],
+        },
+        "https://01-wb-category-searches.wbcon.su/items/": {
+            "method": "get",
+            "keys": ["predmet"]
+        },
+        "https://01-wb-category-searches.wbcon.su/get/?cat_id=644": {
+            "method": "get",
+            "keys": ["item_id", "predmet"]
+        },
+        "https://01-sellers.wbcon.su/inn?inn=9701197351": {
+            "method": "get",
+            "keys": ["inn"]
+        },
+        f"https://01-sellers.wbcon.su/ogrn?ogrn=321392600050191": {
+            "method": "get",
+            "keys": ["ogrn"]
+        },
+        "https://01-pvz.wbcon.su/get_all": {
+            "method": "get",
+            "keys": ["total", "ids"]
+        },
+        "https://01-pvz.wbcon.su/get/?id=22": {
+            "method": "get",
+            "keys": ["id", "locale"]
+        },
+        "https://01-comsa.wbcon.su/get": {
+            "method": "get",
+            "keys": ["category", "predmet"]
+        },
+        "https://01-comsa.wbcon.su/get_logistics_by_period?period=2025-11-25": {
+            "method": "get",
+            "keys": ["warehouse"]
+        },
+        "https://01-prices.wbcon.su/get_spp?articles=141120711;171007032;170095992": {
+            "method": "get",
+            "keys": ["141120711"],
+            "headers": {"wbtoken": "eyJhbGciOiJFUzI1NiIsImtpZCI6IjIwMjUwOTA0djEiLCJ0eXAiOiJKV1QifQ.eyJhY2MiOjMsImVudCI6MSwiZXhwIjoxNzgwMDM5MTIzLCJmb3IiOiJzZWxmIiwiaWQiOiIwMTlhYzZjMC1lYjljLTc5ZTEtODUxZC0zMWJkOWY5YWNkMmIiLCJpaWQiOjExNjA5OTE4LCJvaWQiOjI1NjI0OCwicyI6MTA3Mzc1Nzk1MCwic2lkIjoiODlmOWQ2YTUtMTM4NS00MzJlLWJkN2YtNTE4MTViYzg1MWVkIiwidCI6ZmFsc2UsInVpZCI6MTE2MDk5MTh9.D3RJ0vQaBx4qyaZIwYAfEgAIUE2pv9TOIzmKf0md4y9hHvZbgNG9C6jFoLaLt5XWfln0KzrUW3muIpJ7RNidSg"}
+        },
 
-        # "https://01-prices.wbcon.su/get?articles=141120711;171007032;170095992": {
-        #     "method": "get",
-        #     "keys": ["141120711"],
-        #     "headers": {"wbtoken": "eyJhbGciOiJFUzI1NiIsImtpZCI6IjIwMjUwOTA0djEiLCJ0eXAiOiJKV1QifQ.eyJhY2MiOjMsImVudCI6MSwiZXhwIjoxNzgwMDM5MTIzLCJmb3IiOiJzZWxmIiwiaWQiOiIwMTlhYzZjMC1lYjljLTc5ZTEtODUxZC0zMWJkOWY5YWNkMmIiLCJpaWQiOjExNjA5OTE4LCJvaWQiOjI1NjI0OCwicyI6MTA3Mzc1Nzk1MCwic2lkIjoiODlmOWQ2YTUtMTM4NS00MzJlLWJkN2YtNTE4MTViYzg1MWVkIiwidCI6ZmFsc2UsInVpZCI6MTE2MDk5MTh9.D3RJ0vQaBx4qyaZIwYAfEgAIUE2pv9TOIzmKf0md4y9hHvZbgNG9C6jFoLaLt5XWfln0KzrUW3muIpJ7RNidSg"}
-        # },
-        # "https://01-img.wbcon.su/get?article=36685165": {
-        #     "method": "get",
-        #     "keys": ["article"]
-        # },
-        # "https://01-rc.wbcon.su/get?article=36685165": {
-        #     "method": "get",
-        #     "keys": ["images_urls", "article"]
-        # },
-        # "https://01-wb-video.wbcon.su/get?article=445051493": {
-        #     "method": "get",
-        #     "is_binary": True
-        # },
-        # "https://01-fbphoto.wbcon.su/get?article=4737767": {
-        #     "method": "get",
-        #     "keys": ["article", "photos", "total"]
-        # },
-        # "https://01-fb.wbcon.su/create_task_fb": {
-        #     "method": "post",
-        #     "json": {"article": 117220345},
-        #     "keys": ["created", "task_id"]
-        # },
-        # "https://01-fb.wbcon.su/task_status?task_id=1": {
-        #     "method": "get",
-        #     "keys": ["is_ready"]
-        # },
-        # "https://01-fb.wbcon.su/get_results_fb?task_id=1": {
-        #     "method": "get",
-        #     "keys": ["feedback_count", "feedbacks"]
-        # },
-        # "https://01-ais.wbcon.su/put": {
-        #     "method": "post",
-        #     "json": {
-        #         "article_url": "https://www.wildberries.ru/catalog/266119079/detail.aspx",
-        #         "geo": "msk",
-        #         "search_query": "Детские игрушки"
-        #     },
-        #     "keys": ["article", "exists"]
-        # },
-        # "https://01-sa-day.wbcon.su/get_one/": {
-        #     "method": "post",
-        #     "json": {
-        #         "date": "2025-11-29",
-        #         "query": "кинетический песок"
-        #     },
-        #     "keys": ["search_words", "parse_date", "results"]
-        # },
-        # "https://01-sa.wbcon.su/get_one/": {
-        #     "method": "post",
-        #     "json": {
-        #         "date": "2025-11-29",
-        #         "query": "кинетический песок"
-        #     },
-        #     "keys": ["search_words", "parse_date", "results"]
-        # },
-        # "https://01-sa-day.wbcon.su/get_all/": {
-        #     "method": "post",
-        #     "json": {
-        #         "date": "2025-11-29",
-        #     },
-        #     "keys": ["parse_date", "results"]
-        # },
-        # "https://01-cl.wbcon.su/get_similar/?search_query=женское платье черное": {
-        #     "method": "get",
-        #     "keys": ["searchQuery", "normalQuery", "totalMonthCount", "totalWeekCount", "similarSearches"]
-        # },
-        # "https://01-cl.wbcon.su/get_cluster/?search_query=женское платье черное": {
-        #     "method": "get",
-        #     "keys": ["searchQuery", "normalQuery"]
-        # },
-        # "https://01-500search.wbcon.su/get/": {
-        #     "method": "post",
-        #     "json": {
-        #         "query": "кинетический песок"
-        #     },
-        #     "keys": ["query", "urls"]
-        # },
-        # "https://01-apis.wbcon.su/put": {
-        #     "method": "post",
-        #     "json": {
-        #         "article": 124302872,
-        #         "geo": "msk",
-        #         "search_query": "носки"
-        #     },
-        #     # "keys": ["article", "position", "exists"]
-        # },
-        # "https://01-apis-ads.wbcon.su/find": {
-        #     "method": "post",
-        #     "json": {
-        #         "article": "70416789",
-        #         "geo": "msk",
-        #         "search_query": "ковер"
-        #     },
-        #     "keys": ["article", "position", "exists"]
-        # },
-        # "https://01-coef.wbcon.su/get_coef": {
-        #     "method": "post",
-        #     "json": {
-        #         "wh_id": 507,
-        #         "delivery_date": "2024-03-30",
-        #         "delivery_type": "koroba"
-        #     },
-        #     "keys": ["coef"]
-        # },
-        # "https://01-wbsug.wbcon.su/get?search_word=худи": {
-        #     "method": "get",
-        #     "keys": ["search_word", "total", "suggestions"]
-        # },
-        # "https://01-wbsim.wbcon.su/get?search_word=худи": {
-        #     "method": "get",
-        #     "keys": ["search_word", "total", "similars"]
-        # },
-        # "https://01-total.wbcon.su/put": {
-        #     "method": "post",
-        #     "json": {
-        #         "search_query": "платье"
-        #     },
-        #     "keys": ["results"]
-        # },
-        # "https://01-barcode.wbcon.su/put": {
-        #     "method": "post",
-        #     "json": {
-        #         "type": "pdf",
-        #         "viewBarcode": True,
-        #         "product": {
-        #             "barcode": "A205851764",
-        #             "name": "Классический костюм тройка деловой",
-        #             "width": 800,
-        #             "height": 400
-        #         }
-        #     },
-        #     "keys": ["link"],
-        # },
-        # "https://01-qr.wbcon.su/put": {
-        #     "method": "post",
-        #     "json": {
-        #         "type": "pdf",
-        #         "viewBarcode": True,
-        #         "product": {
-        #             "barcode": "A205851764",
-        #             "name": "Классический костюм тройка деловой",
-        #             "width": 800
-        #         }
-        #     },
-        #     "keys": ["link"]
-        # },
-        # "https://01-etiketka.wbcon.su/put": {
-        #     "method": "post",
-        #     "json": {
-        #         "viewBarcode": True,
-        #         "barcode": "45896325",
-        #         "name": "Обувь Кроссовки",
-        #         "article": "4589633258",
-        #         "manuf_name": "ООО Белвест",
-        #         "brand": "БелвестОбувь",
-        #         "size": "44",
-        #         "color": "brown",
-        #         "font_size": 16,
-        #         "field_free": "Ботинки зимние меховые для мужчин",
-        #         "width": 58,
-        #         "height": 60
-        #     },
-        #     "keys": ["link"]
-        # },
-        # "https://01-oz.wbcon.su/put": {
-        #     "method": "post",
-        #     "json": {
-        #         "article": 563429170
-        #     },
-        #     "keys": ["name"],
-        #     "check_empty_string": True
-        # },
-        # "https://01-price-ozon.wbcon.su/put": {
-        #     "method": "post",
-        #     "json": {
-        #         "article": 563429170
-        #     },
-        #     "keys": ["name"],
-        #     "check_empty_string": True
-        # },
-        # "https://01-ozimg.wbcon.su/put": {
-        #     "method": "post",
-        #     "json": {
-        #         "article": 563429170
-        #     },
-        #     "keys": ["article", "images_list"],
-        #     "check_empty_string": True
-        # }
+        "https://01-prices.wbcon.su/get?articles=141120711;171007032;170095992": {
+            "method": "get",
+            "keys": ["141120711"],
+            "headers": {"wbtoken": "eyJhbGciOiJFUzI1NiIsImtpZCI6IjIwMjUwOTA0djEiLCJ0eXAiOiJKV1QifQ.eyJhY2MiOjMsImVudCI6MSwiZXhwIjoxNzgwMDM5MTIzLCJmb3IiOiJzZWxmIiwiaWQiOiIwMTlhYzZjMC1lYjljLTc5ZTEtODUxZC0zMWJkOWY5YWNkMmIiLCJpaWQiOjExNjA5OTE4LCJvaWQiOjI1NjI0OCwicyI6MTA3Mzc1Nzk1MCwic2lkIjoiODlmOWQ2YTUtMTM4NS00MzJlLWJkN2YtNTE4MTViYzg1MWVkIiwidCI6ZmFsc2UsInVpZCI6MTE2MDk5MTh9.D3RJ0vQaBx4qyaZIwYAfEgAIUE2pv9TOIzmKf0md4y9hHvZbgNG9C6jFoLaLt5XWfln0KzrUW3muIpJ7RNidSg"}
+        },
+        "https://01-img.wbcon.su/get?article=36685165": {
+            "method": "get",
+            "keys": ["article"]
+        },
+        "https://01-rc.wbcon.su/get?article=36685165": {
+            "method": "get",
+            "keys": ["images_urls", "article"]
+        },
+        "https://01-wb-video.wbcon.su/get?article=445051493": {
+            "method": "get",
+            "is_binary": True
+        },
+        "https://01-fbphoto.wbcon.su/get?article=4737767": {
+            "method": "get",
+            "keys": ["article", "photos", "total"]
+        },
+        "https://01-fb.wbcon.su/create_task_fb": {
+            "method": "post",
+            "json": {"article": 117220345},
+            "keys": ["created", "task_id"]
+        },
+        "https://01-fb.wbcon.su/task_status?task_id=1": {
+            "method": "get",
+            "keys": ["is_ready"]
+        },
+        "https://01-fb.wbcon.su/get_results_fb?task_id=1": {
+            "method": "get",
+            "keys": ["feedback_count", "feedbacks"]
+        },
+        "https://01-ais.wbcon.su/put": {
+            "method": "post",
+            "json": {
+                "article_url": "https://www.wildberries.ru/catalog/266119079/detail.aspx",
+                "geo": "msk",
+                "search_query": "Детские игрушки"
+            },
+            "keys": ["article", "exists"]
+        },
+        "https://01-sa-day.wbcon.su/get_one/": {
+            "method": "post",
+            "json": {
+                "date": "2025-11-29",
+                "query": "кинетический песок"
+            },
+            "keys": ["search_words", "parse_date", "results"]
+        },
+        "https://01-sa.wbcon.su/get_one/": {
+            "method": "post",
+            "json": {
+                "date": "2025-11-29",
+                "query": "кинетический песок"
+            },
+            "keys": ["search_words", "parse_date", "results"]
+        },
+        "https://01-sa-day.wbcon.su/get_all/": {
+            "method": "post",
+            "json": {
+                "date": "2025-11-29",
+            },
+            "keys": ["parse_date", "results"]
+        },
+        "https://01-cl.wbcon.su/get_similar/?search_query=женское платье черное": {
+            "method": "get",
+            "keys": ["searchQuery", "normalQuery", "totalMonthCount", "totalWeekCount", "similarSearches"]
+        },
+        "https://01-cl.wbcon.su/get_cluster/?search_query=женское платье черное": {
+            "method": "get",
+            "keys": ["searchQuery", "normalQuery"]
+        },
+        "https://01-500search.wbcon.su/get/": {
+            "method": "post",
+            "json": {
+                "query": "кинетический песок"
+            },
+            "keys": ["query", "urls"]
+        },
+        "https://01-apis.wbcon.su/put": {
+            "method": "post",
+            "json": {
+                "article": 124302872,
+                "geo": "msk",
+                "search_query": "носки"
+            },
+            # "keys": ["article", "position", "exists"]
+        },
+        "https://01-apis-ads.wbcon.su/find": {
+            "method": "post",
+            "json": {
+                "article": "70416789",
+                "geo": "msk",
+                "search_query": "ковер"
+            },
+            "keys": ["article", "position", "exists"]
+        },
+        "https://01-coef.wbcon.su/get_coef": {
+            "method": "post",
+            "json": {
+                "wh_id": 507,
+                "delivery_date": "2024-03-30",
+                "delivery_type": "koroba"
+            },
+            "keys": ["coef"]
+        },
+        "https://01-wbsug.wbcon.su/get?search_word=худи": {
+            "method": "get",
+            "keys": ["search_word", "total", "suggestions"]
+        },
+        "https://01-wbsim.wbcon.su/get?search_word=худи": {
+            "method": "get",
+            "keys": ["search_word", "total", "similars"]
+        },
+        "https://01-total.wbcon.su/put": {
+            "method": "post",
+            "json": {
+                "search_query": "платье"
+            },
+            "keys": ["results"]
+        },
+        "https://01-barcode.wbcon.su/put": {
+            "method": "post",
+            "json": {
+                "type": "pdf",
+                "viewBarcode": True,
+                "product": {
+                    "barcode": "A205851764",
+                    "name": "Классический костюм тройка деловой",
+                    "width": 800,
+                    "height": 400
+                }
+            },
+            "keys": ["link"],
+        },
+        "https://01-qr.wbcon.su/put": {
+            "method": "post",
+            "json": {
+                "type": "pdf",
+                "viewBarcode": True,
+                "product": {
+                    "barcode": "A205851764",
+                    "name": "Классический костюм тройка деловой",
+                    "width": 800
+                }
+            },
+            "keys": ["link"]
+        },
+        "https://01-etiketka.wbcon.su/put": {
+            "method": "post",
+            "json": {
+                "viewBarcode": True,
+                "barcode": "45896325",
+                "name": "Обувь Кроссовки",
+                "article": "4589633258",
+                "manuf_name": "ООО Белвест",
+                "brand": "БелвестОбувь",
+                "size": "44",
+                "color": "brown",
+                "font_size": 16,
+                "field_free": "Ботинки зимние меховые для мужчин",
+                "width": 58,
+                "height": 60
+            },
+            "keys": ["link"]
+        },
+        "https://01-oz.wbcon.su/put": {
+            "method": "post",
+            "json": {
+                "article": 563429170
+            },
+            "keys": ["name"],
+            "check_empty_string": True
+        },
+        "https://01-price-ozon.wbcon.su/put": {
+            "method": "post",
+            "json": {
+                "article": 563429170
+            },
+            "keys": ["name"],
+            "check_empty_string": True
+        },
+        "https://01-ozimg.wbcon.su/put": {
+            "method": "post",
+            "json": {
+                "article": 563429170
+            },
+            "keys": ["article", "images_list"],
+            "check_empty_string": True
+        },
         "https://01-wb-seasons.wbcon.su/items": {
             "method": "get",
             "json": {
