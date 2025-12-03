@@ -3,6 +3,8 @@ from datetime import datetime
 
 # Маппинг URL на человекочитаемые названия API
 API_NAMES = {
+    "wb-seasons.wbcon.su/items": "Аналитика по предметам ВБ.",
+    "wb-seasons.wbcon.su/get": "Аналитика по категориям ВБ.",
     "wb-pr-quota.wbcon.su/quota": "Мониторинг квот Перераспределения",
     "wb-pr-quota.wbcon.su/stats": "Мониторинг квот (статистика)",
     "na.wbcon.su": "ПОЛНЫЙ Анализ ниш Wildberries",
@@ -102,6 +104,8 @@ def format_status_message(endpoints_status: dict) -> list[str]:
 
             if status == "Success":
                 msg += f"✅ <a href='{endpoint}'>{api_name}</a> <code>{time_str}</code>\n"
+            elif "rate limit" in str(status).lower():
+                msg += f"⚠️ <a href='{endpoint}'>{api_name}</a> <code>{time_str}</code> - <i>{status}</i>\n"
             else:
                 msg += f"❌ <a href='{endpoint}'>{api_name}</a> <code>{time_str}</code> - <i>{status}</i>\n"
         msg += "</blockquote>\n"
@@ -132,6 +136,8 @@ def format_status_message(endpoints_status: dict) -> list[str]:
 
             if status == "Success":
                 msg += f"✅ <a href='{endpoint}'>{api_name}</a> <code>{time_str}</code>\n"
+            elif "rate limit" in str(status).lower():
+                msg += f"⚠️ <a href='{endpoint}'>{api_name}</a> <code>{time_str}</code> - <i>{status}</i>\n"
             else:
                 msg += f"❌ <a href='{endpoint}'>{api_name}</a> <code>{time_str}</code> - <i>{status}</i>\n"
         msg += "</blockquote>\n"

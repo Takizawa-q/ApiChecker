@@ -21,18 +21,21 @@ async def check_and_send_status(bot: Bot, chat_id: int):
         for message in messages:
             await bot.send_message(chat_id=chat_id, text=message)
             await asyncio.sleep(0.1)
+        
     except Exception as e:
         log.error(f"Check failed: {e}")
         await bot.send_message(chat_id=chat_id, text=f"❌ Error checking endpoints: {str(e)}")
 
 
 async def main():
-    log.info("Bot starting")
+    log.info("")
     bot = Bot(config.tgbot.token,
               default=DefaultBotProperties(parse_mode="HTML"))
 
-    chat_id = -559707673
+    chat_id = -559707673 # Телега Бот
+    # chat_id = -1002076414278 # Тестовый
     await check_and_send_status(bot, chat_id)
+    # bot.close()
 
 
 if __name__ == "__main__":
