@@ -32,8 +32,8 @@ async def main():
     bot = Bot(config.tgbot.token,
               default=DefaultBotProperties(parse_mode="HTML"))
 
-    chat_id = -559707673 # Телега Бот
-    # chat_id = -1002076414278 # Тестовый
+    # chat_id = -559707673 # Телега Бот
+    chat_id = -1002076414278 # Тестовый
     await check_and_send_status(bot, chat_id)
     # bot.close()
 

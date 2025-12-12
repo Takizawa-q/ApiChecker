@@ -8,7 +8,7 @@ class RequestSession:
     def __init__(
         self,
         impersonate: str = "chrome",
-        timeout: int = 30,
+        timeout: int = 120,
         proxy: Optional[str] = None,
         verify: bool = True
     ):

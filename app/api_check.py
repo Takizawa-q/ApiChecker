@@ -217,9 +217,9 @@ async def check_endpoints():
             "method": "get",
             "keys": ["warehouse"]
         },
-        "https://01-prices.wbcon.su/get_spp?articles=141120711;171007032;170095992": {
+        "https://01-prices.wbcon.su/get?articles=539926571": {
             "method": "get",
-            "keys": ["141120711"],
+            "keys": ["539926571"],
             "headers": {"wbtoken": "eyJhbGciOiJFUzI1NiIsImtpZCI6IjIwMjUwOTA0djEiLCJ0eXAiOiJKV1QifQ.eyJhY2MiOjMsImVudCI6MSwiZXhwIjoxNzgwMDM5MTIzLCJmb3IiOiJzZWxmIiwiaWQiOiIwMTlhYzZjMC1lYjljLTc5ZTEtODUxZC0zMWJkOWY5YWNkMmIiLCJpaWQiOjExNjA5OTE4LCJvaWQiOjI1NjI0OCwicyI6MTA3Mzc1Nzk1MCwic2lkIjoiODlmOWQ2YTUtMTM4NS00MzJlLWJkN2YtNTE4MTViYzg1MWVkIiwidCI6ZmFsc2UsInVpZCI6MTE2MDk5MTh9.D3RJ0vQaBx4qyaZIwYAfEgAIUE2pv9TOIzmKf0md4y9hHvZbgNG9C6jFoLaLt5XWfln0KzrUW3muIpJ7RNidSg"}
         },
 
@@ -416,11 +416,7 @@ async def check_endpoints():
             "check_empty_string": True
         },
         "https://01-wb-seasons.wbcon.su/items": {
-            "method": "get",
-            "json": {
-                "item_id": 4
-            }
-        },
+            "method": "get"},
         "https://01-wb-seasons.wbcon.su/get/?cat_id=5655": {
             "method": "get",
         }
@@ -455,7 +451,7 @@ async def check_endpoints():
     tasks = []
     for api, data in RESPONSES.items():
         tasks.append(asyncio.create_task(cents(api, data)))
-        # tasks.append(asyncio.create_task(demo(api, data)))  # DEMO temporarily disabled
+        tasks.append(asyncio.create_task(demo(api, data))) 
 
     await asyncio.gather(*tasks)
     return wbcon_api.endpoints_status

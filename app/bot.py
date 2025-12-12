@@ -85,7 +85,7 @@ def format_status_message(endpoints_status: dict) -> list[str]:
     # === Сообщение 1: Платные API (50 копеек) ===
     if paid_endpoints:
         paid_success = sum(1 for data in paid_endpoints.values()
-                           if data["status"] == "Success")
+                           if data["status"] == "Success" or "rate limit" in str(data["status"]).lower())
         paid_error = len(paid_endpoints) - paid_success
         paid_total = len(paid_endpoints)
         paid_uptime = (paid_success / paid_total *
@@ -117,7 +117,7 @@ def format_status_message(endpoints_status: dict) -> list[str]:
     # === Сообщение 2: DEMO API ===
     if demo_endpoints:
         demo_success = sum(1 for data in demo_endpoints.values()
-                           if data["status"] == "Success")
+                           if data["status"] == "Success" or "rate limit" in str(data["status"]).lower())
         demo_error = len(demo_endpoints) - demo_success
         demo_total = len(demo_endpoints)
         demo_uptime = (demo_success / demo_total *
@@ -149,7 +149,7 @@ def format_status_message(endpoints_status: dict) -> list[str]:
     # === Сообщение 3: Общая статистика ===
     total_count = len(endpoints_status)
     success_count = sum(1 for data in endpoints_status.values()
-                        if data["status"] == "Success")
+                        if data["status"] == "Success" or "rate limit" in str(data["status"]).lower())
     error_count = total_count - success_count
     uptime_percent = (success_count / total_count *
                       100) if total_count > 0 else 0
