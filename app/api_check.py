@@ -81,11 +81,11 @@ class WbConApiClient():
         if "rate limit exceeded" in r.text.lower():
             self.endpoints_status[endpoint]["status"] = "Rate limit exceeded"
             return
-
+        
+        print(r.text[1:200])
         if r.status_code != 200:
             self.endpoints_status[endpoint]["status"] = r.status_code
             return
-
         # Try to parse JSON response
         try:
             response_data = r.json()
