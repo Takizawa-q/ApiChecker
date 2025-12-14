@@ -43,7 +43,7 @@ class WbConApiClient():
                 url=endpoint,
                 headers=headers,
                 params=self.params,
-                timeout=60,
+                timeout=120,
                 *args,
                 **kwargs
             )
@@ -81,7 +81,7 @@ class WbConApiClient():
         if "rate limit exceeded" in r.text.lower():
             self.endpoints_status[endpoint]["status"] = "Rate limit exceeded"
             return
-        
+
         print(r.text[1:200])
         if r.status_code != 200:
             self.endpoints_status[endpoint]["status"] = r.status_code
@@ -451,7 +451,7 @@ async def check_endpoints():
     tasks = []
     for api, data in RESPONSES.items():
         tasks.append(asyncio.create_task(cents(api, data)))
-        tasks.append(asyncio.create_task(demo(api, data))) 
+        tasks.append(asyncio.create_task(demo(api, data)))
 
     await asyncio.gather(*tasks)
     return wbcon_api.endpoints_status
