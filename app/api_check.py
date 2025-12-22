@@ -181,7 +181,7 @@ async def check_endpoints():
             "method": "get",
             "keys": ["predmet"]
         },
-        f"https://01-wb-price-segments.wbcon.su/get/?cat_id=5655": {
+        f"https://01-wb-price-segments.wbcon.su/get/?cat_id=509": {
             "method": "get",
             "keys": ["parse_time"],
         },
@@ -312,15 +312,6 @@ async def check_endpoints():
                 "search_query": "носки"
             },
             # "keys": ["article", "position", "exists"]
-        },
-        "https://01-apis-ads.wbcon.su/find": {
-            "method": "post",
-            "json": {
-                "article": "70416789",
-                "geo": "msk",
-                "search_query": "ковер"
-            },
-            "keys": ["article", "position", "exists"]
         },
         "https://01-coef.wbcon.su/get_coef": {
             "method": "post",
